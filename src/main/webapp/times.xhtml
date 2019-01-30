@@ -20,7 +20,7 @@
             <p:inputText id="uniforme" label="uniforme" value="#{timeBean.time.uniforme}" maxlength="14" size="40"  />                   
  
             
-            <!--Botão com utiliando a propriedade ActionListener executando o metodo salvar sem nenhuma regra de navegação, e atualizando todo o form, veja mais em http://codeerror.wordpress.com/2009/06/01/jsf-actionlistener-outra-possibilidade/-->
+            <!--Botão com utiliando a propriedade ActionListener executando o metodo salvar sem nenhuma regra de navegação, e atualizando todo o form -->
             
             <p:commandButton id="btnSalvar" value="SALVAR" actionListener="#{timeBean.salvar}" update="form" />
           </h:panelGrid>
@@ -34,7 +34,7 @@
                 
                 <!--Criando uma coluna para receber um determinando dado que tem em um objeto da nossa lista, nesse caso nome de time-->
                 <p:column headerText="NOME" style="text-align: center">
-                    <!--Aqui onde acesso o objeto cli.nome e apresentamos na tabela, e assim com os seguintes-->
+                    <!--Aqui onde acesso o objeto tim.nome e apresentamos na tabela, e assim com os seguintes-->
                     <h:outputText value="#{tim.nome}" />
                 </p:column>
                 
@@ -47,13 +47,13 @@
                 
                     <!--Abaixo o botão editar com uma Action do nosso metodo editar que criamos no Bean-->
                     <p:commandButton action="#{timeBean.editar}" value="EDITAR" title="Editar" ajax="false"  >
-                        <!-- Abaixo temos o setPropertyActionListener que é utilizado para pegar o objeto cli e setar no objeto time la no nosso bean, para editarmos-->
+                        <!-- Abaixo temos o setPropertyActionListener que é utilizado para pegar o objeto tim e setar no objeto time la no nosso bean, para editarmos-->
                         <f:setPropertyActionListener value="#{tim}" target="#{timeBean.time}" />
                     </p:commandButton>
                     
-                    <!-- Abaixo temos o botão excluir com a propriedade onclick contendo o nome do modal e acessando um método de abri-lo que é o show, também existe o hide que é para feixa-lo.-->
+                    <!-- Abaixo temos o botão excluir com a propriedade onclick contendo o nome do modal e acessando um método de abri-lo que é o show, também existe o hide que é para feicha-lo.-->
                     <p:commandButton action="#{timeBean.excluir}" value="EXCLUIR" title="Excluir" style="margin-left: 5px" update="form">
-                        <!-- Abaixo temos o setPropertyActionListener que é utilizado para pegar o objeto cli e setar no objeto time la no nosso bean, para posteriomente excluirmos-->
+                        <!-- Abaixo temos o setPropertyActionListener que é utilizado para pegar o objeto tim e setar no objeto time la no nosso bean, para posteriomente excluirmos-->
                         <f:setPropertyActionListener value="#{tim}" target="#{timeBean.time}" />
                     </p:commandButton>
                 </p:column>
