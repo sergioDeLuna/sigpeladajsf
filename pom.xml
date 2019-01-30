@@ -32,8 +32,14 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- JSF -->
@@ -53,6 +59,12 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- EL -->
@@ -96,7 +108,7 @@
 				<configuration>
 					<scanIntervalSeconds>5</scanIntervalSeconds>
 					<webApp>
-						<contextPath>/jsfspring</contextPath>
+						<contextPath>/com.futebol.sigpeladajsf</contextPath>
 					</webApp>
 				</configuration>
 			</plugin>

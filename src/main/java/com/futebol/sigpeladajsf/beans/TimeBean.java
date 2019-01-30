@@ -1,42 +1,38 @@
 package com.futebol.sigpeladajsf.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import org.springframework.context.annotation.Scope;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionEvent;
 
 import com.futebol.sigpeladajsf.dominio.Time;
 import com.futebol.sigpeladajsf.service.TimeService;
 
 
-@Named
-@Scope("session")
+@ManagedBean(name="timeBean")
+@SessionScoped
 public class TimeBean {
 
-	private Time time;
-	private List<Time> times;
+	private Time time = new Time();
+	private List<Time> times = new ArrayList<Time>();	
+	private TimeService timeService = new TimeService();
 	
-	@Inject
-	private TimeService timeService;
-
-	public void iniciarBean() {
-		times = timeService.recuperar();
-	}
-
-	public void novotime() {
-		time = new Time();
-	}
-
-	public void salvar() {
+	public void salvar(ActionEvent event) {
 		timeService.salvar(time);
+		time = new Time();
 		times = timeService.recuperar();
-		time = null;
+		
 	}
 
-	public void editar(Time time) {
-		this.time = time;
+	public void editar() {
+		time = timeService.recuperarPorId(time.getId());
+	}
+	
+	public void excluir() {
+		timeService.excluir(time.getId());
+		times = timeService.recuperar();
 	}
 
 	public void voltar() {
