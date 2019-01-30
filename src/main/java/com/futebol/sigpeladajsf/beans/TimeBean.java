@@ -1,5 +1,6 @@
 package com.futebol.sigpeladajsf.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,31 +11,61 @@ import javax.faces.event.ActionEvent;
 import com.futebol.sigpeladajsf.dominio.Time;
 import com.futebol.sigpeladajsf.service.TimeService;
 
-
+/**
+ * Bean de Time
+ * @author sergioluna
+ *
+ */
 @ManagedBean(name="timeBean")
 @SessionScoped
-public class TimeBean {
+public class TimeBean implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Time
+	 */
 	private Time time = new Time();
-	private List<Time> times = new ArrayList<Time>();	
+	
+	/**
+	 * Lista de Times
+	 */
+	private List<Time> times = new ArrayList<Time>();
+	
+	/**
+	 * Service de Time
+	 */
 	private TimeService timeService = new TimeService();
 	
+	/**
+	 * Método para salvar
+	 * @param event
+	 */
 	public void salvar(ActionEvent event) {
 		timeService.salvar(time);
 		time = new Time();
 		times = timeService.recuperar();
 		
 	}
-
+	
+	/**
+	 * Método para Editar
+	 */
 	public void editar() {
 		time = timeService.recuperarPorId(time.getId());
 	}
 	
+	/**
+	 * Método para Excluir
+	 */
 	public void excluir() {
 		timeService.excluir(time.getId());
 		times = timeService.recuperar();
 	}
-
+	
+	/**
+	 * Método para voltar
+	 */
 	public void voltar() {
 		this.time = null;
 	}

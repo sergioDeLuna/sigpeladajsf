@@ -52,22 +52,13 @@
                     </p:commandButton>
                     
                     <!-- Abaixo temos o botão excluir com a propriedade onclick contendo o nome do modal e acessando um método de abri-lo que é o show, também existe o hide que é para feixa-lo.-->
-                    <p:commandButton value="EXCLUIR" title="Excluir" onclick="confirmation.show()" style="margin-left: 5px" >
+                    <p:commandButton action="#{timeBean.excluir}" value="EXCLUIR" title="Excluir" style="margin-left: 5px" update="form">
                         <!-- Abaixo temos o setPropertyActionListener que é utilizado para pegar o objeto cli e setar no objeto time la no nosso bean, para posteriomente excluirmos-->
                         <f:setPropertyActionListener value="#{tim}" target="#{timeBean.time}" />
                     </p:commandButton>
                 </p:column>
             </p:dataTable>
         </p:panel>
-        </h:form>   
-        <!-- Abaixo temos um modal de confirmação de exclusão repare que ele é fora do form principal, pois se colocarmos dentro podemos ter alguns problemas com isso.-->
-        <h:form id="dlg">
-            <p:confirmDialog message="Deseja realmente excluir este registro?" hideEffect="explode" header="Aviso" severity="alert" widgetVar="confirmation" modal="true">
-                <!--caso seja sim chamo o metodo excluir, e fecho o modal com o oncomplete, tenho o process que estou dizendo para processar o form, e update para atualizar a tabela-->
-                <p:commandButton id="btnSim" value="Sim" oncomplete="confirmation.hide();" actionListener="#{timeBean.excluir}" process="@form" update="form:tabela" />
-                <!--caso seja não somente fecha o modal-->
-                <p:commandButton id="btnNao" value="Não" onclick="confirmation.hide();" type="button"/>
-            </p:confirmDialog>
         </h:form>
     </h:body>
 </html>

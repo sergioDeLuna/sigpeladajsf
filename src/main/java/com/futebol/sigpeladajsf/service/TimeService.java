@@ -2,9 +2,7 @@ package com.futebol.sigpeladajsf.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.futebol.sigpeladajsf.dao.TimeDao;
 import com.futebol.sigpeladajsf.dominio.Time;
@@ -15,28 +13,27 @@ import com.futebol.sigpeladajsf.dominio.Time;
  *
  */
 @Service
-@Transactional
+//@Transactional
 public class TimeService {
 	
 	/**
 	 * TimeDao
 	 */
-    @Autowired
-    private TimeDao timeDao;
+    private TimeDao timeDao = new TimeDao();
     
     /**
      * Salvar time
      * @param time
      */
     public void salvar(Time time) {
-        timeDao.salvar(time);
+    	timeDao.salvar(time);
     }
     
     /**
      * Recuperar times
      * @return
      */
-    @Transactional(readOnly = true)
+    //@Transactional(readOnly = true)
     public List<Time> recuperar() {
         return timeDao.recuperar();
     }
@@ -46,8 +43,8 @@ public class TimeService {
      * @param id
      * @return
      */
-    @Transactional(readOnly = true)
-    public Time recuperarPorId(long id) {
+    //@Transactional(readOnly = true)
+    public Time recuperarPorId(int id) {
         return timeDao.recuperarPorID(id);
     }
     
@@ -63,8 +60,9 @@ public class TimeService {
      * Excluir time
      * @param id
      */
-    public void excluir(long id) {
+    public void excluir(int id) {
         timeDao.excluir(id);
+        
     }
  
 }
