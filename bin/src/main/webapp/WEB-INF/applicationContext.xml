@@ -1,0 +1,19 @@
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd"
+>
+
+    <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <description>
+            Configuração do escopo de VIEW.
+        </description>
+        <property name="scopes">
+            <map>
+                <entry key="view">
+                    <bean class="com.futebol.sigpeladajsf.config.ViewScope"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>
